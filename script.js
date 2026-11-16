@@ -63,22 +63,27 @@ function renderMarksChart(sorted) {
   chart.innerHTML = `
     <div class="chart-frame">
       <div class="chart-axis" aria-hidden="true"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div>
-      <div class="chart-plot" role="img" aria-label="Student marks from 0 to 100">
-        <div class="chart-columns">
+      <div class="chart-scroll">
+        <div class="chart-plot" role="group" aria-label="Student marks from 0 to 100">
+          <div class="chart-columns">
           ${visibleStudents.map(student => `
             <div class="chart-column">
-              <div class="chart-column-plot">
-                <div class="chart-bar" role="progressbar" aria-label="${escapeHtml(student.name)} marks"
-                     aria-valuemin="0" aria-valuemax="100" aria-valuenow="${student.marks}"
-                     style="height:${student.marks}%"></div>
-              </div>
+              <div class="chart-bar" role="progressbar" aria-label="${escapeHtml(student.name)} marks"
+                   aria-valuemin="0" aria-valuemax="100" aria-valuenow="${student.marks}"
+                   style="height:${student.marks}%"></div>
+            </div>`).join("")}
+          </div>
+        </div>
+        <div class="chart-labels">
+          ${visibleStudents.map(student => `
+            <div class="chart-label">
               <strong class="chart-score">${student.marks}/100</strong>
               <span class="chart-name">${escapeHtml(student.name)}</span>
               <span class="chart-id">${escapeHtml(student.studentId)} · Set ${student.set}</span>
             </div>`).join("")}
+        </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
 }
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));

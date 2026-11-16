@@ -5,8 +5,10 @@ BUG FIXING CHALLENGE LEADERBOARD
 WHAT IS INCLUDED
 - index.html: leaderboard page
 - style.css: page design and responsive layout
+- dashboard.css: vertical marks dashboard styling
 - script.js: add/edit/delete, automatic ranking and CSV export
-- The leaderboard page also shows a marks graph that updates with scores.
+- Click "Show dashboard" to open the marks dashboard.
+- The dashboard can show all scores together or filter by Set A or Set B.
 
 HOW TO OPEN
 1. Extract the ZIP file.
@@ -39,7 +41,8 @@ EDIT / DELETE
 LEADERBOARD
 - Highest score appears first.
 - Students with equal marks share the same rank.
-- The marks graph displays each student's score as a bar out of 100.
+- The marks dashboard shows a vertical graph with a fixed 0–100 score range.
+- Use the dashboard filter to view the combined scores or only Set A or Set B.
 - The app does not automatically apply a tie-break test. Organizers should apply the event's announced tie-break rule separately and update the final scores/ranking if required.
 
 BACKUP
