@@ -7,7 +7,7 @@ WHAT IS INCLUDED
 - style.css: page design and responsive layout
 - dashboard.css: vertical marks dashboard styling
 - script.js: add/edit/delete, automatic ranking and CSV export
-- Click "Show dashboard" to open the marks dashboard.
+- Click "Show dashboard" at the top to open the marks dashboard and hide organizer controls for presentation. Click "Hide dashboard" to return to data entry.
 - The dashboard can show all scores together or filter by Set A or Set B.
 
 HOW TO OPEN

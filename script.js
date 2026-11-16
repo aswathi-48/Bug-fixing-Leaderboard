@@ -117,6 +117,8 @@ $("clearButton").addEventListener("click", () => { clearForm(); showMessage("");
 $("marksDashboardToggle").addEventListener("click", () => {
   const dashboard = $("marksDashboard");
   const isExpanded = $("marksDashboardToggle").getAttribute("aria-expanded") === "true";
+  $("organizerPanel").hidden = !isExpanded;
+  $("eventControl").hidden = !isExpanded;
   dashboard.hidden = isExpanded;
   $("marksDashboardToggle").setAttribute("aria-expanded", String(!isExpanded));
   $("marksDashboardToggle").textContent = isExpanded ? "Show dashboard" : "Hide dashboard";

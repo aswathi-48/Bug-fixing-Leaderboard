@@ -13,6 +13,7 @@
     <p class="eyebrow">PYTHON PROGRAMMING COMPETITION</p>
     <h1>BUG FIXING <span>LEADERBOARD</span></h1>
     <p class="subtitle">Enter marks, track scores and announce the top performers.</p>
+    <button class="secondary dashboard-toggle" type="button" id="marksDashboardToggle" aria-expanded="false" aria-controls="marksDashboard organizerPanel eventControl">Show dashboard</button>
   </header>
 
   <main class="container">
@@ -23,7 +24,7 @@
       <article class="stat"><span>Maximum marks</span><strong>100</strong></article>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="organizerPanel">
       <div class="section-heading">
         <div><p class="eyebrow">ORGANIZER PANEL</p><h2>Add / Update Student Marks</h2></div>
         <span class="tag">Admin use</span>
@@ -50,10 +51,6 @@
     </section>
 
     <section class="panel">
-      <div class="section-heading">
-        <div><p class="eyebrow">SCORE OVERVIEW</p><h2>Marks dashboard</h2></div>
-        <button class="secondary" type="button" id="marksDashboardToggle" aria-expanded="false" aria-controls="marksDashboard">Show dashboard</button>
-      </div>
       <div id="marksDashboard" hidden>
         <label class="chart-filter-label" for="chartSetFilter">Display scores
           <select id="chartSetFilter">
@@ -83,7 +80,7 @@
       <p class="hint">Ranking is sorted by score (highest first). Equal scores share the same rank. Apply your announced tie-break rule separately if needed.</p>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="eventControl">
       <div class="section-heading"><div><p class="eyebrow">EVENT CONTROL</p><h2>Data backup</h2></div></div>
       <p class="hint">Scores are saved in this browser on this computer. Download a CSV backup after entering marks. Clearing browser data or changing computers may remove the saved list.</p>
       <button class="danger" id="resetButton">Delete all leaderboard data</button>
