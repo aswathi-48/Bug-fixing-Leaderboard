@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CODE PARTY - D'EVIX | Bug Fixing Leaderboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="brand">SYNNEFO SOLUTIONS <span>• CODE PARTY – D'EVIX</span></div>
+    <p class="eyebrow">PYTHON PROGRAMMING COMPETITION</p>
+    <h1>BUG FIXING <span>LEADERBOARD</span></h1>
+    <p class="subtitle">Enter marks, track scores and announce the top performers.</p>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <article class="stat"><span>Participants</span><strong id="participantCount">0</strong></article>
+      <article class="stat"><span>Marks entered</span><strong id="markedCount">0</strong></article>
+      <article class="stat"><span>Highest score</span><strong id="highestScore">—</strong></article>
+      <article class="stat"><span>Maximum marks</span><strong>100</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">ORGANIZER PANEL</p><h2>Add / Update Student Marks</h2></div>
+        <span class="tag">Admin use</span>
+      </div>
+      <form id="studentForm">
+        <input type="hidden" id="editId">
+        <div class="form-grid">
+          <label>Student ID <input id="studentId" required placeholder="e.g. PY001"></label>
+          <label>Student name <input id="studentName" required placeholder="Enter full name"></label>
+          <label>Question paper
+            <select id="paperSet" required><option value="A">Set A</option><option value="B">Set B</option></select>
+          </label>
+          <label>Marks (out of 100)
+            <input id="marks" type="number" min="0" max="100" step="1" required placeholder="0–100">
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="primary" type="submit" id="saveButton">Add Student Score</button>
+          <button class="secondary" type="button" id="clearButton">Clear</button>
+        </div>
+        <p class="hint">Enter the final verified total only. The app checks that marks are between 0 and 100.</p>
+        <p id="formMessage" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">SCORE OVERVIEW</p><h2>Marks dashboard</h2></div>
+        <button class="secondary" type="button" id="marksDashboardToggle" aria-expanded="false" aria-controls="marksDashboard">Show dashboard</button>
+      </div>
+      <div id="marksDashboard" hidden>
+        <label class="chart-filter-label" for="chartSetFilter">Display scores
+          <select id="chartSetFilter">
+            <option value="all">Combined (All Sets)</option>
+            <option value="A">Set A only</option>
+            <option value="B">Set B only</option>
+          </select>
+        </label>
+        <div id="marksChart" class="marks-chart" aria-label="Student marks graph"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">LIVE RANKING</p><h2>Leaderboard</h2></div>
+        <div class="toolbar">
+          <button class="secondary small" id="exportButton">Download CSV</button>
+          <button class="secondary small" onclick="window.print()">Print</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Rank</th><th>Student ID</th><th>Student name</th><th>Set</th><th>Score</th><th>Action</th></tr></thead>
+          <tbody id="leaderboardBody"><tr><td colspan="6" class="empty">No scores added yet.</td></tr></tbody>
+        </table>
+      </div>
+      <p class="hint">Ranking is sorted by score (highest first). Equal scores share the same rank. Apply your announced tie-break rule separately if needed.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading"><div><p class="eyebrow">EVENT CONTROL</p><h2>Data backup</h2></div></div>
+      <p class="hint">Scores are saved in this browser on this computer. Download a CSV backup after entering marks. Clearing browser data or changing computers may remove the saved list.</p>
+      <button class="danger" id="resetButton">Delete all leaderboard data</button>
+      <p class="hint warning">Use this only after exporting a backup. This action cannot be undone.</p>
+    </section>
+  </main>
+
+  <footer>CODE PARTY – D'EVIX • BUG FIXING CHALLENGE • PYTHON</footer>
+  <script src="script.js"></script>
+</body>
+</html>
