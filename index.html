@@ -3,92 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10172a">
   <title>CODE PARTY - D'EVIX | Bug Fixing Leaderboard</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
   <header class="hero">
-    <div class="brand">SYNNEFO SOLUTIONS <span>• CODE PARTY – D'EVIX</span></div>
-    <p class="eyebrow">PYTHON PROGRAMMING COMPETITION</p>
-    <h1>BUG FIXING <span>LEADERBOARD</span></h1>
-    <p class="subtitle">Enter marks, track scores and announce the top performers.</p>
-    <button class="secondary dashboard-toggle" type="button" id="marksDashboardToggle" aria-expanded="false" aria-controls="marksDashboard organizerPanel eventControl">Show dashboard</button>
+    <div class="hero-inner">
+      <div class="topbar">
+        <a class="brand" href="#" aria-label="Code Party D'EVIX home">
+          <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+          <span class="brand-copy">SYNNEFO SOLUTIONS<span>CODE PARTY <i>/</i> D'EVIX</span></span>
+        </a>
+        <span class="event-pill"><span class="live-dot" aria-hidden="true"></span> PYTHON PROGRAMMING CHALLENGE</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-copy">
+          <p class="eyebrow">BUG FIXING CHALLENGE</p>
+          <h1>Think fast.<br><span>Fix smart.</span></h1>
+          <p class="subtitle">The live leaderboard for today's sharpest problem solvers. Track every score and celebrate the top performers.</p>
+          <button class="dashboard-toggle" type="button" id="marksDashboardToggle" aria-expanded="false" aria-controls="marksDashboard organizerPanel eventControl">
+            <span class="button-icon" aria-hidden="true">▦</span> Show presentation dashboard
+          </button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div>
+          <div class="art-orbit orbit-two"></div>
+          <div class="code-window">
+            <div class="window-dots"><i></i><i></i><i></i><span>challenge.py</span></div>
+            <div class="code-lines">
+              <span><b>01</b> <em>def</em> solve(problem):</span>
+              <span><b>02</b> &nbsp;&nbsp;while <strong>not</strong> solved:</span>
+              <span><b>03</b> &nbsp;&nbsp;&nbsp;&nbsp;debug()</span>
+              <span><b>04</b> &nbsp;&nbsp;<strong>return</strong> <i>success</i></span>
+            </div>
+            <div class="success-chip"><span aria-hidden="true">✓</span> Bug fixed</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-bottom"><span>CODE PARTY / LIVE SCOREBOARD</span><span>01 — COMPETE &nbsp;&nbsp; 02 — CLIMB &nbsp;&nbsp; 03 — CELEBRATE</span></div>
+    </div>
   </header>
 
   <main class="container">
-    <section class="stats">
-      <article class="stat"><span>Participants</span><strong id="participantCount">0</strong></article>
-      <article class="stat"><span>Marks entered</span><strong id="markedCount">0</strong></article>
-      <article class="stat"><span>Highest score</span><strong id="highestScore">—</strong></article>
-      <article class="stat"><span>Maximum marks</span><strong>100</strong></article>
+    <section class="stats" aria-label="Competition summary">
+      <article class="stat"><span class="stat-icon participants-icon" aria-hidden="true">01</span><div><span class="stat-label">Participants</span><strong id="participantCount">0</strong></div></article>
+      <article class="stat"><span class="stat-icon entered-icon" aria-hidden="true">02</span><div><span class="stat-label">Scores entered</span><strong id="markedCount">0</strong></div></article>
+      <article class="stat"><span class="stat-icon highest-icon" aria-hidden="true">03</span><div><span class="stat-label">Highest score</span><strong id="highestScore">—</strong></div></article>
+      <article class="stat"><span class="stat-icon maximum-icon" aria-hidden="true">04</span><div><span class="stat-label">Maximum marks</span><strong>100</strong></div></article>
     </section>
 
-    <section class="panel" id="organizerPanel">
+    <section class="panel organizer-panel" id="organizerPanel">
       <div class="section-heading">
-        <div><p class="eyebrow">ORGANIZER PANEL</p><h2>Add / Update Student Marks</h2></div>
-        <span class="tag">Admin use</span>
+        <div class="heading-copy"><p class="eyebrow">ORGANIZER WORKSPACE</p><h2>Add or update a score</h2><p class="section-description">Enter verified student details to update the live rankings.</p></div>
+        <span class="tag"><span aria-hidden="true">●</span> Admin use</span>
       </div>
       <form id="studentForm">
         <input type="hidden" id="editId">
         <div class="form-grid">
-          <label>Student ID <input id="studentId" required placeholder="e.g. PY001"></label>
-          <label>Student name <input id="studentName" required placeholder="Enter full name"></label>
-          <label>Question paper
-            <select id="paperSet" required><option value="A">Set A</option><option value="B">Set B</option></select>
-          </label>
-          <label>Marks (out of 100)
-            <input id="marks" type="number" min="0" max="100" step="1" required placeholder="0–100">
-          </label>
+          <label for="studentId">Student ID<input id="studentId" required placeholder="e.g. PY001" autocomplete="off"></label>
+          <label for="studentName">Student name<input id="studentName" required placeholder="Enter full name" autocomplete="name"></label>
+          <label for="paperSet">Question paper<select id="paperSet" required><option value="A">Set A</option><option value="B">Set B</option></select></label>
+          <label for="marks">Marks <span class="label-note">/ 100</span><input id="marks" type="number" min="0" max="100" step="1" required placeholder="0–100"></label>
         </div>
-        <div class="form-actions">
-          <button class="primary" type="submit" id="saveButton">Add Student Score</button>
-          <button class="secondary" type="button" id="clearButton">Clear</button>
+        <div class="form-footer">
+          <p class="hint"><span aria-hidden="true">i</span> Enter the final verified total only. Marks must be between 0 and 100.</p>
+          <div class="form-actions">
+            <button class="primary" type="submit" id="saveButton">Add student score <span aria-hidden="true">→</span></button>
+            <button class="secondary" type="button" id="clearButton">Clear</button>
+          </div>
         </div>
-        <p class="hint">Enter the final verified total only. The app checks that marks are between 0 and 100.</p>
-        <p id="formMessage" class="message" role="status"></p>
+        <p id="formMessage" class="message" role="status" aria-live="polite"></p>
       </form>
     </section>
 
-    <section class="panel">
+    <section class="panel dashboard-panel" id="dashboardPanel" aria-label="Score dashboard" hidden>
       <div id="marksDashboard" hidden>
-        <label class="chart-filter-label" for="chartSetFilter">Display scores
-          <select id="chartSetFilter">
-            <option value="all">Combined (All Sets)</option>
-            <option value="A">Set A only</option>
-            <option value="B">Set B only</option>
-          </select>
-        </label>
+        <div class="section-heading dashboard-heading">
+          <div class="heading-copy"><p class="eyebrow">SCORE OVERVIEW</p><h2>Performance at a glance</h2></div>
+          <label class="chart-filter-label" for="chartSetFilter">Show scores
+            <select id="chartSetFilter">
+              <option value="all">All sets</option>
+              <option value="A">Set A only</option>
+              <option value="B">Set B only</option>
+            </select>
+          </label>
+        </div>
         <div id="marksChart" class="marks-chart" aria-label="Student marks graph"></div>
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel leaderboard-panel">
       <div class="section-heading">
-        <div><p class="eyebrow">LIVE RANKING</p><h2>Leaderboard</h2></div>
+        <div class="heading-copy"><p class="eyebrow">THE CURRENT STANDINGS</p><h2>Leaderboard <span class="live-label"><span class="live-dot" aria-hidden="true"></span> Live</span></h2><p class="section-description">Every point counts. Keep climbing.</p></div>
         <div class="toolbar">
-          <button class="secondary small" id="exportButton">Download CSV</button>
-          <button class="secondary small" onclick="window.print()">Print</button>
+          <button class="secondary small" id="exportButton"><span aria-hidden="true">↓</span> Download CSV</button>
+          <button class="secondary small" type="button" onclick="window.print()"><span aria-hidden="true">▧</span> Print</button>
         </div>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Rank</th><th>Student ID</th><th>Student name</th><th>Set</th><th>Score</th><th>Action</th></tr></thead>
+          <caption class="sr-only">Student scores and rankings for the bug fixing challenge</caption>
+          <thead><tr><th scope="col">Rank</th><th scope="col">Student ID</th><th scope="col">Student name</th><th scope="col">Set</th><th scope="col">Score</th><th scope="col">Actions</th></tr></thead>
           <tbody id="leaderboardBody"><tr><td colspan="6" class="empty">No scores added yet.</td></tr></tbody>
         </table>
       </div>
-      <p class="hint">Ranking is sorted by score (highest first). Equal scores share the same rank. Apply your announced tie-break rule separately if needed.</p>
+      <p class="hint ranking-note">Rankings are sorted by score, highest first. Equal scores share the same rank.</p>
     </section>
 
-    <section class="panel" id="eventControl">
-      <div class="section-heading"><div><p class="eyebrow">EVENT CONTROL</p><h2>Data backup</h2></div></div>
-      <p class="hint">Scores are saved in this browser on this computer. Download a CSV backup after entering marks. Clearing browser data or changing computers may remove the saved list.</p>
-      <button class="danger" id="resetButton">Delete all leaderboard data</button>
-      <p class="hint warning">Use this only after exporting a backup. This action cannot be undone.</p>
+    <section class="panel backup-panel" id="eventControl">
+      <div class="backup-copy"><span class="backup-icon" aria-hidden="true">↗</span><div><p class="eyebrow">EVENT CONTROL</p><h2>Keep your data safe</h2><p class="section-description">Scores are saved in this browser on this computer. Download a CSV backup before clearing browser data or switching devices.</p></div></div>
+      <div class="backup-actions"><button class="danger" id="resetButton">Delete all data</button><p class="hint warning">This cannot be undone. Export a backup first.</p></div>
     </section>
   </main>
 
-  <footer>CODE PARTY – D'EVIX • BUG FIXING CHALLENGE • PYTHON</footer>
+  <footer><span class="footer-mark">&lt;/&gt;</span><span>CODE PARTY — D'EVIX</span><i></i><span>BUG FIXING CHALLENGE</span><i></i><span>PYTHON</span><span class="footer-year">BUILT FOR THE NEXT GENERATION OF PROBLEM SOLVERS</span></footer>
   <script src="script.js"></script>
 </body>
 </html>

@@ -119,9 +119,12 @@ $("marksDashboardToggle").addEventListener("click", () => {
   const isExpanded = $("marksDashboardToggle").getAttribute("aria-expanded") === "true";
   $("organizerPanel").hidden = !isExpanded;
   $("eventControl").hidden = !isExpanded;
+  $("dashboardPanel").hidden = isExpanded;
   dashboard.hidden = isExpanded;
   $("marksDashboardToggle").setAttribute("aria-expanded", String(!isExpanded));
-  $("marksDashboardToggle").textContent = isExpanded ? "Show dashboard" : "Hide dashboard";
+  $("marksDashboardToggle").innerHTML = isExpanded
+    ? '<span class="button-icon" aria-hidden="true">▦</span> Show presentation dashboard'
+    : '<span class="button-icon" aria-hidden="true">▦</span> Hide presentation dashboard';
 });
 $("chartSetFilter").addEventListener("change", () => renderMarksChart(sortedStudents()));
 $("leaderboardBody").addEventListener("click", (event) => {
